@@ -1,5 +1,13 @@
-function getStringsLength(arr) {
-  return arr.map((el) => el.length);
-}
+function getAverage(arr) {
+  if (arr.length === 0) {
+    return 0;
+  }
+  const result = arr.reduce((x, y) => x + y, 0) / arr.length;
 
-console.log(getStringsLength(['angular', 'react', 'ember']));
+  if (result % 1 !== 0) {
+    return parseFloat(result.toFixed(2));
+  }
+
+  return result;
+}
+console.log(getAverage([1, 10, 100, 1000]));
