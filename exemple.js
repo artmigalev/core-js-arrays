@@ -1,6 +1,3 @@
-function findAllOccurrences(arr, item) {
-  const result = arr.filter((el) => el === item);
-  return result.length;
-}
-
-console.log(findAllOccurrences([0, 0, 1, 1, 1, 2], 1));
+console.log(removeFalsyValues([0, false, 'cat', NaN, true, '']));
+console.log(removeFalsyValues([1, 2, 3, 4, 5, 'false']));
+console.log(removeFalsyValues([false, 0, NaN, '', undefined]));
