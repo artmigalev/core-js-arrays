@@ -1,5 +1,4 @@
-function isSameLength(arr) {
-  const el = arr[0].length
-  return arr.every((n) => n.length === el);
+function isValueEqualsIndex(arr ) {
+  return arr.some(n => n === arr[n])
 }
-console.log(isSameLength(['cat', 'dog', 'elephant']));
+console.log(isValueEqualsIndex([2, 10, 0, 4, 5]));
