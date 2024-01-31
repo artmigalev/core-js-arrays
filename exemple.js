@@ -1,4 +1,6 @@
-function insertItem(arr, n) {
-  return n === 0 ? arr.slice(-n) : [];
+function insertItem(arr) {
+  // arr.push(arr.join())
+
+  return arr.concat(arr)
 }
-console.log(insertItem(['a', 'b', 'c', 'd'], 0));
+console.log(insertItem(['a', 'b', 'c', 'd']));
