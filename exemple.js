@@ -1,13 +1,5 @@
-function getAverage(arr) {
-  if (arr.length === 0) {
-    return 0;
-  }
-  const result = arr.reduce((x, y) => x + y, 0) / arr.length;
-
-  if (result % 1 !== 0) {
-    return parseFloat(result.toFixed(2));
-  }
-
-  return result;
+function isSameLength(arr) {
+  const el = arr[0].length
+  return arr.every((n) => n.length === el);
 }
-console.log(getAverage([1, 10, 100, 1000]));
+console.log(isSameLength(['cat', 'dog', 'elephant']));
