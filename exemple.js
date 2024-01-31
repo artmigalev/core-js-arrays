@@ -1,5 +1,4 @@
 function insertItem(arr, n) {
-
-  return n === 0 ? [] : arr.slice(0,n)
+  return n === 0 ? arr.slice(-n) : [];
 }
-console.log(insertItem([1, 3, 4, 5], 0));
+console.log(insertItem(['a', 'b', 'c', 'd'], 0));
