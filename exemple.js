@@ -1,4 +1,5 @@
-function isValueEqualsIndex(arr ) {
-  return arr.some(n => n === arr[n])
+function insertItem(arr, n) {
+
+  return n === 0 ? [] : arr.slice(0,n)
 }
-console.log(isValueEqualsIndex([2, 10, 0, 4, 5]));
+console.log(insertItem([1, 3, 4, 5], 0));
