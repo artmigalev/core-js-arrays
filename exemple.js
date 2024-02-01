@@ -1,9 +1,22 @@
+function calculateBalance(arr) {
+  if(arr.length === 0){
+    return 0
+  }
+  const arrResult = arr.reduce(function(acc, curr) {
+    return acc.reduce((a, b) => a - b) + curr.reduce((a, b) => a - b);
 
 
-function nArr (n,size) {
-  const arr = new Array(size).fill(0)
-  console.log(arr)
-  return arr.map(el => Array(n).fill(arr)).length
+  })
+  return arrResult
+
 }
 
-console.log(nArr(4,2))
+
+
+
+console.log(
+  calculateBalance([
+    [10, 8],
+    [5, 1],
+  ])
+);
