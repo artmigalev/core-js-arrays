@@ -1,6 +1,9 @@
-function insertItem(arr) {
-  // arr.push(arr.join())
 
-  return arr.concat(arr)
+
+function nArr (n,size) {
+  const arr = new Array(size).fill(0)
+  console.log(arr)
+  return arr.map(el => Array(n).fill(arr)).length
 }
-console.log(insertItem(['a', 'b', 'c', 'd']));
+
+console.log(nArr(4,2))
