@@ -1,22 +1,13 @@
-function calculateBalance(arr) {
-  if(arr.length === 0){
-    return 0
+function getFalsyValuesCount(arr) {
+  if (arr.length === 0) {
+    return 0;
   }
-  const arrResult = arr.reduce(function(acc, curr) {
-    return acc.reduce((a, b) => a - b) + curr.reduce((a, b) => a - b);
+  const res = arr.filter((_, i , arr) => !arr[i])
 
-
-  })
-  return arrResult
-
+  return res.length
 }
 
-
-
-
-console.log(
-  calculateBalance([
-    [10, 8],
-    [5, 1],
-  ])
-);
+console.log(getFalsyValuesCount([null, undefined, NaN, false, 0, ''])); /* 6*/
+// console.log(getFalsyValuesCount([])); /* 0*/
+console.log(getFalsyValuesCount([1, '', 3])); /* 1*/
+console.log(getFalsyValuesCount([-1, 'false', null, 0])); /* 2*/

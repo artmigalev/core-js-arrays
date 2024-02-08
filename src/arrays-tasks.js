@@ -279,7 +279,7 @@ function distinct(arr) {
 /**
  * Creates an n-dimensional array and fills it with zeros.
  *
- * @param {number} n - Depth of outter array (n > 0).
+ * @param {number} n - Depth of outer array (n > 0).
  * @param {number} size - Length of all arrays (size > 0).
  * @return {array} - The n-dimensional array filled with zeros.
  *
@@ -330,7 +330,7 @@ function selectMany(arr, childrenSelector) {
  * Expenses may be greater than income.
  * You need to calculate the final balance.
  *
- * @param {array} arr - The input array [[income, expence], ...]
+ * @param {array} arr - The input array [[income, expense], ...]
  * @return {number} - The final balance.
  *
  * @example
@@ -360,8 +360,10 @@ function calculateBalance(arr) {
  *    createChunks(['a', 'b', 'c', 'd', 'e'], 2) => [['a', 'b'], ['c', 'd'], ['e']]
  *    createChunks([10, 20, 30, 40, 50], 1) => [[10], [20], [30], [40], [50]]
  */
-function createChunks(/* arr, chunkSize */) {
-  throw new Error('Not implemented');
+function createChunks(arr, chunkSize) {
+  return [...Array(Math.ceil(arr.length / chunkSize))].map(() =>
+    arr.splice(0, chunkSize)
+  );
 }
 
 /**
@@ -376,8 +378,8 @@ function createChunks(/* arr, chunkSize */) {
  *    generateOdds(2) => [ 1, 3 ]
  *    generateOdds(5) => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+function generateOdds(number) {
+  return Array.from({ length: (number - 1) / 1 + 1 }, (v, k) => 1 + k * 2);
 }
 
 /**
@@ -408,8 +410,13 @@ function getElementByIndices(/* arr, indices */) {
  *  getFalsyValuesCount([ -1, 'false', null, 0 ]) => 2
  *  getFalsyValuesCount([ null, undefined, NaN, false, 0, '' ]) => 6
  */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getFalsyValuesCount(arr) {
+  if (arr.length === 0) {
+    return 0;
+  }
+  const res = arr.filter((_, i, ar) => !ar[i]);
+
+  return res.length;
 }
 
 /**
