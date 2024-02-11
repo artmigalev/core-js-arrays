@@ -1,20 +1,16 @@
-function getMaxItems(arr, n) {
-  return arr
-    .sort((a, b) => {
-      if (a > b) {
-        return -1;
-      }
-      if (a < b) {
-        return 1;
-      }
-      return 0;
+function findCommonElements(arr1, arr2) {
+  return arr1
+    .map((_, i, arr) => {
+      return arr2.map((el) => {
+        return el === arr[i] ? el : undefined;
+      });
     })
-    .slice(0, n);
+    .flat(2)
+    .filter((el) => el !== undefined);
 }
+
 console.log(
-  getMaxItems([], 5) /* []*/,
-  getMaxItems([1, 2], 1) /* [ 2]*/,
-  getMaxItems([2, 3, 1], 2) /* [ 3, 2]*/,
-  getMaxItems([10, 2, 7, 5, 3, -5], 3) /* [ 10, 7, 5 ]*/,
-  getMaxItems([10, 10, 10, 10], 3) /* [ 10, 10, 10 ]*/
+  findCommonElements([1, 2, 3], [2, 3, 4]) /* [ 2, 3 ]*/,
+  findCommonElements(['a', 'b', 'c'], ['b', 'c', 'd']) /*[ 'b', 'c' ]*/,
+  findCommonElements([1, 2, 3], ['a', 'b', 'c']) /*[]*/
 );
