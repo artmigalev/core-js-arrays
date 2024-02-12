@@ -379,7 +379,7 @@ function createChunks(arr, chunkSize) {
  *    generateOdds(5) => [ 1, 3, 5, 7, 9 ]
  */
 function generateOdds(number) {
-  return Array.from({ length: (number - 1) / 1 + 1 }, (v, k) => 1 + k * 2);
+  return Array.from({ length: (number - 1) / 1 + 1 }, (_, k) => 1 + k * 2);
 }
 
 /**
@@ -394,8 +394,9 @@ function generateOdds(number) {
  *   getElementByIndices(['one','two','three'], [2]) => 'three'  (arr[2])
  *   getElementByIndices([[[ 1, 2, 3]]], [ 0, 0, 1 ]) => 2        (arr[0][0][1])
  */
-function getElementByIndices(/* arr, indices */) {
-  throw new Error('Not implemented');
+function getElementByIndices(arr, indices) {
+  const len = indices.length;
+  return arr.flat(len)[indices[len - 1]];
 }
 
 /**
@@ -560,8 +561,10 @@ function findLongestIncreasingSubsequence(/* nums */) {
  *  propagateItemsByPositionIndex([ 'a', 'b', 'c', null ]) => [ 'a', 'b', 'b', 'c', 'c', 'c',  null, null, null, null ]
  *  propagateItemsByPositionIndex([ 1,2,3,4,5 ]) => [ 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(arr) {
+  return arr.flatMap((el, i) => {
+    return Array.from({ length: i + 1 }).fill(el);
+  });
 }
 
 /**
