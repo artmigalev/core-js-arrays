@@ -289,8 +289,10 @@ function distinct(arr) {
  *    createNDimensionalArray(4, 2) => [[[[0, 0], [0, 0]], [[0, 0], [0, 0]]], [[[0, 0], [0, 0]], [[0, 0], [0, 0]]]]
  *    createNDimensionalArray(1, 1) => [0]
  */
-function createNDimensionalArray(/* n, size */) {
-  throw new Error('Not implemented');
+function createNDimensionalArray(n, size) {
+  return Array(size)
+    .fill()
+    .map(() => (n > 1 ? createNDimensionalArray(n - 1, size) : 0));
 }
 
 /**
@@ -581,17 +583,9 @@ function propagateItemsByPositionIndex(arr) {
  *    shiftArray([10, 20, 30, 40, 50], -3) => [40, 50, 10, 20, 30]
  */
 function shiftArray(arr, n) {
-  if (n > 0) {
-    for (let i = 0; i < n; i += 1) {
-      arr.unshift(arr.pop());
-    }
-  }
-  if (n < 0) {
-    for (let i = 0; i > n; i -= 1) {
-      arr.push(arr.shift());
-    }
-  }
-  return arr;
+  n= n % arr.length;
+  if (n < 0) n = n + arr.length;
+  return arr.slice(n).concat(arr.slice(0, n));
 }
 
 /**
@@ -607,8 +601,23 @@ function shiftArray(arr, n) {
  *   sortDigitNamesByNumericOrder([ 'nine','eight','nine','eight' ]) => [ 'eight','eight','nine','nine']
  *   sortDigitNamesByNumericOrder([ 'one','one','one','zero' ]) => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
+function sortDigitNamesByNumericOrder(arr) {
+  if (arr.length === 0) return [];
+  const digits = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+  ];
+  return arr.sort((a, b) => {
+    return digits.indexOf(a) - digits.indexOf(b);
+  });
 }
 
 /**
